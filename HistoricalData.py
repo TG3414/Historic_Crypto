@@ -155,7 +155,14 @@ class HistoricalData(object):
         provisional_start = self._date_structurer(provisional_start)
         provisional_end = start + timedelta(0, (i+1)*(self.granularity * requests_per_message))
         provisional_end = self._date_structurer(provisional_end)
-        response = requests.get("https://api.pro.coinbase.com/products/{0}/candles?start={1}&end={2}&granularity={3}".format(
+        
+        if i == range(int(number_of_requests/requests_per_message)+1)[-1]:
+          response = requests.get("https://api.pro.coinbase.com/products/{0}/candles?start={1}&granularity={2}".format(
+                                                                                                                    ticker,
+                                                                                                                    provisional_start,
+                                                                                                                    granularity))
+        else:
+          response = requests.get("https://api.pro.coinbase.com/products/{0}/candles?start={1}&end={2}&granularity={3}".format(
                                                                                                                       self.ticker,
                                                                                                                       provisional_start,
                                                                                                                       provisional_end,
