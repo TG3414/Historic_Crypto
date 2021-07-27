@@ -127,10 +127,9 @@ class HistoricalData(object):
     number_of_requests = out/self.granularity
 
     if number_of_requests <= 300:
-      response = requests.get("https://api.pro.coinbase.com/products/{0}/candles?start={1}&end={2}&granularity={3}".format(
+      response = requests.get("https://api.pro.coinbase.com/products/{0}/candles?start={1}&granularity={2}".format(
                                                                                                                       self.ticker,
                                                                                                                       self.start_datestring,
-                                                                                                                      self.end_datestring,
                                                                                                                       self.granularity))
       if response.status_code == 200 and self.verbose:
         print('Data Extracted from API...')
