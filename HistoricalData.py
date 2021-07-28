@@ -158,9 +158,9 @@ class HistoricalData(object):
         
         if i == range(int(number_of_requests/requests_per_message)+1)[-1]:
           response = requests.get("https://api.pro.coinbase.com/products/{0}/candles?start={1}&granularity={2}".format(
-                                                                                                                    ticker,
+                                                                                                                    self.ticker,
                                                                                                                     provisional_start,
-                                                                                                                    granularity))
+                                                                                                                    self.granularity))
         else:
           response = requests.get("https://api.pro.coinbase.com/products/{0}/candles?start={1}&end={2}&granularity={3}".format(
                                                                                                                       self.ticker,
