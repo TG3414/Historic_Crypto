@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-!pip install requests
 import requests
 import json
 import time
@@ -192,6 +191,3 @@ class HistoricalData(object):
       data.sort_index(inplace=True)
       data.drop_duplicates(subset=None, keep='first', inplace=True)
       return data
-
-
-new = HistoricalData('ETH-USD',300,'2020-06-01-00-00').retrieve_data()
