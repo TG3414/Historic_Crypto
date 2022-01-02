@@ -134,6 +134,8 @@ class HistoricalData(object):
         print('Data Extracted from API...')
       elif response.status_code == 404 and self.verbose:
         raise TypeError("Error status code: 404.")
+      else:
+        print('Run Failed.')
 
       response_lists = json.loads(response.text)
       data = pd.DataFrame(response_lists)
